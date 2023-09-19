@@ -1,0 +1,28 @@
+name: Share data between jobs
+on: [push]
+
+jobs:
+  example-job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: expr 1 + 0 > output.log
+
+      - name: upload output file
+        id: upload-artifact-id
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-log-file
+          path: output.log
+
+      - name: create a file
+        shell: bash
+        run: |
+          touch test.txt
+          ls
+          
+  example-job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: ls
