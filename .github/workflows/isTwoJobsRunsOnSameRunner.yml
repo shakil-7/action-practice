@@ -1,5 +1,5 @@
 name: Share data between jobs
-on: [pull]
+on: [push]
 
 jobs:
   example-job-1:
