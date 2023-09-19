@@ -1,0 +1,14 @@
+name: Run a spring boot project
+on: [push]
+
+jobs:
+  build-run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          echo $(java --version)
+          echo $(mvn --version)
+          echo $(aws --version)
+          echo $(docker --version)
+      
