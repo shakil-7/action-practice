@@ -12,4 +12,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output-log-file
-          path: random_folder/output.log
+          path: output.log
