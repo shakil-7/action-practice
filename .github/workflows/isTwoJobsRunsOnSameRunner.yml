@@ -33,3 +33,10 @@ jobs:
     steps:
       - shell: bash
         run: ls
+        
+  job-4:
+    runs-on: ubuntu-latest
+    needs: example-job-1
+    steps:
+      - shell: bash
+        run: ls
