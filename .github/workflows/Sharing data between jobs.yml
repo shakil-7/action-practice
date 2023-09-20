@@ -1,0 +1,12 @@
+name: Sharing data between jobs
+on: workflow_dispatch
+
+jobs:
+  sharingDataBetweenJobs:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 1+0 > output.log
+          cat output.log
+          pwd
