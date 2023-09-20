@@ -1,0 +1,10 @@
+name: strategy-matrix-single-dimension
+on: workflow_dispatch
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        value: [1,2,3]
+    steps:
+      - run: echo ${{matrix.value}}
