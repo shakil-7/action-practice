@@ -5,10 +5,11 @@ jobs:
   sharingDataBetweenJobs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - shell: bash
         run: |
           expr 1 + 0 > output.log
-          ls
-          cat output.log
-          pwd
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-log-file
+          path: random_folder/output.log
