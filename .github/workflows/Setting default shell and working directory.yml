@@ -16,7 +16,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: cd ~/
+        working-directory: $(cd ~/)
         
     steps:
       - run: pwd
