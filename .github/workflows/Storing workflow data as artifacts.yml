@@ -1,0 +1,9 @@
+name: Storing workflow data as artifacts
+
+on: workflow_dispatch
+
+jobs:
+  storingWorkflowDataAsArtifact:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "every is okey"
