@@ -7,7 +7,7 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr 1 + 0 > output.log
+          expr 100000000 + 0 > output.log
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
