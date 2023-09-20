@@ -2,25 +2,17 @@ name: passing data from one job to another using matrix
 on: workflow_dispatch
 
 jobs:
-  matrixExample:
+  job1:
     runs-on: ubuntu-latest
-
     outputs:
-      matrix: ${{steps.test.outputs.matrix}}
-      
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - shell: bash
-        id: test
-        run: echo 1 >> $GITHUB_OUTPUT
-        
-  getPassedData:
+      - id: set-matrix
+        run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
+  job2:
+    needs: job1
     runs-on: ubuntu-latest
-    needs: matrixExample
-
     strategy:
-      matrix: ${{needs.matrixExample.outputs.matrix}}
-
+      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
-      - shell: bash
-        run: ${{ $GITHUB_OUTPUT }}
-  
+      - run: build
