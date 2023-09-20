@@ -7,6 +7,7 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr 1+0 > output.log
+          expr 1 + 0 > output.log
+          ls
           cat output.log
           pwd
