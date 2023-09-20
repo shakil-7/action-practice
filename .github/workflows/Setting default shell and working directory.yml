@@ -7,8 +7,17 @@ env:
   DAY_OF_WEEK: Monday
 
 jobs:
-  greeting_job:
+  this-is-default-location:
     runs-on: ubuntu-latest
-    
     steps:
       - run: pwd
+  change-default-location:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./scripts
+        
+    steps:
+      - run: pwd
+
